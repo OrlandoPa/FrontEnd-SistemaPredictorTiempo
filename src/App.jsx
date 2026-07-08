@@ -9,6 +9,8 @@ const localNow = () => {
   return `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
 };
 
+const API_URL = import.meta.env.VITE_API_URL || 'https://sistema-predictor-tiempo-transporte.onrender.com';
+
 export default function App() {
   const [clickMode, setClickMode] = useState('origin');
   const [origLat, setOrigLat] = useState('');
@@ -282,7 +284,7 @@ export default function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://sistema-predictor-tiempo-transporte.onrender.com/predict', {
+      const response = await fetch(`${API_URL}/predict`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -314,7 +316,7 @@ export default function App() {
 
     } catch (err) {
       console.error(err);
-      alert('No se pudo conectar con el servidor. Asegúrate de que el backend esté corriendo en http://localhost:8000');
+      alert(`No se pudo conectar con el servidor. Asegúrate de que el backend esté activo en: ${API_URL}`);
     } finally {
       setIsLoading(false);
     }
