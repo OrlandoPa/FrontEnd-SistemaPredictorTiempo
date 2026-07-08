@@ -21,9 +21,6 @@ Esta versión ha sido migrada a **React** con **Vite** para ofrecer una estructu
 ## 📂 Estructura del Repositorio
 ```
 Frontend/
-├── .github/
-│   └── workflows/
-│       └── static.yml         # GitHub Actions para compilar y desplegar a GitHub Pages desde /dist
 ├── public/                    # Recursos públicos y estáticos (ej. favicon)
 ├── src/
 │   ├── assets/                # Assets gráficos del proyecto
